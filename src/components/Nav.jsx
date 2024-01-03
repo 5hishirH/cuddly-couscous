@@ -39,12 +39,12 @@ const Nav = () => {
             {/* desktop navigation */}
             <div className="hidden sm:flex sm:items-center sm:gap-4">
               <div>
-                <button
+                <Link
                   href="/create-prompt"
                   className="btn btn-neutral btn-sm rounded-full font-normal"
                 >
                   Create Post
-                </button>
+                </Link>
               </div>
               <div>
                 <button
