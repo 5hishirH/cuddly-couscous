@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { getProviders, signOut } from "next-auth/react";
+import { getProviders, signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 const Nav = () => {
-  const isLoggedIn = true;
+  const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
 
@@ -34,7 +34,7 @@ const Nav = () => {
         </Link>
       </div>
       <div className="flex-none gap-4 items-center">
-        {isLoggedIn ? (
+        {session?.user ? (
           <>
             {/* desktop navigation */}
             <div className="hidden sm:flex sm:items-center sm:gap-4">
@@ -60,7 +60,7 @@ const Nav = () => {
               >
                 <div className="w-9 rounded-full">
                   <Image
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src={session?.user.image}
                     height={32}
                     width={32}
                     alt="Stock Image"
@@ -78,7 +78,7 @@ const Nav = () => {
               >
                 <div className="w-9 rounded-full">
                   <Image
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src={session?.user.image}
                     height={32}
                     width={32}
                     alt="Stock Image"
