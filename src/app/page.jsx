@@ -1,7 +1,11 @@
+import Feed from "@/components/Feed";
+
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      <Feed />
+    </div>
+  );
+};
 
-export default Home
+export default Home;
