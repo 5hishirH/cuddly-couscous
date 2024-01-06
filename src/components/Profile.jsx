@@ -1,11 +1,10 @@
 import PromptCard from "./PromptCard";
 
-const Profile = ({ posts }) => {
-  console.log(posts);
+const Profile = ({ posts, handleDelete }) => {
   return (
     <div>
       {posts.map((post) => (
-        <PromptCard key={post._id} post={post} />
+        <PromptCard key={post._id} post={post} handleDelete={handleDelete} />
       ))}
     </div>
   );
