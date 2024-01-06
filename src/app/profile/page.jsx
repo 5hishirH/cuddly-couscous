@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const MyProfile = () => {
   const { data: session } = useSession();
-
   const [myPosts, setMyPosts] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -22,6 +23,10 @@ const MyProfile = () => {
 
     if (session?.user.id) fetchPosts();
   }, [session?.user.id]);
+
+  const handleEdit = (post) => {
+    router.push(`/update-prompt?id=${post._id}`);
+  };
 
   const handleDelete = (post) => {
     Swal.fire({
@@ -67,7 +72,7 @@ const MyProfile = () => {
   return (
     <div>
       <ToastContainer />
-      <Profile posts={myPosts} handleDelete={handleDelete} />
+      <Profile posts={myPosts} handleEdit={handleEdit} handleDelete={handleDelete} />
     </div>
   );
 };

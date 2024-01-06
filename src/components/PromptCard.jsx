@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const PromptCard = ({ post, handleTagClick, handleDelete }) => {
+const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const [copied, setCopied] = useState("");
 
   const { data: session } = useSession();
@@ -51,10 +51,19 @@ const PromptCard = ({ post, handleTagClick, handleDelete }) => {
 
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className="flex items-center gap-2">
-          <button className="link link-warning">Edit</button>
+          <button
+            className="link link-warning"
+            onClick={() => {
+              handleEdit(post);
+            }}
+          >
+            Edit
+          </button>
           <button
             className="link link-error"
-            onClick={() => {handleDelete(post)}}
+            onClick={() => {
+              handleDelete(post);
+            }}
           >
             Delete
           </button>
