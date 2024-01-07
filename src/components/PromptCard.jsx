@@ -22,7 +22,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       <div className="avatar">
         <div className="w-8 rounded-full">
           <Image
-            src={post.creator.image}
+            src={post?.creator?.image}
             height={32}
             width={32}
             alt="profic pic"
@@ -31,13 +31,13 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       </div>
 
       <div>
-        <h3>{post.creator.username}</h3>
-        <h4>{post.creator.email}</h4>
+        <h3>{post?.creator?.username}</h3>
+        <h4>{post?.creator?.email}</h4>
       </div>
       <div onClick={handleCopy} className="cursor-pointer">
         <Image
           src={
-            copied === post.prompt
+            copied === post?.prompt
               ? "/assets/icons/tick.svg"
               : "/assets/icons/copy.svg"
           }
@@ -46,10 +46,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           alt="icon"
         />
       </div>
-      <p>{post.prompt}</p>
-      <h4>{post.tag}</h4>
+      <p>{post?.prompt}</p>
+      <h4>{post?.tag}</h4>
 
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
+      {session?.user.id === post?.creator?._id && pathName === "/profile" && (
         <div className="flex items-center gap-2">
           <button
             className="link link-warning"
